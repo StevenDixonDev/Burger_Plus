@@ -2,8 +2,10 @@ const orm = require('../config/orm');
 
 const burger =  {
     all: function(){
-        return orm.all("burgers");
+        return orm.selectAll("burgers");
     }
 }
 
-module.export = burger;
+
+
+module.exports = burger;
