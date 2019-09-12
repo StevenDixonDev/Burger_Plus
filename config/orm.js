@@ -18,7 +18,7 @@ function insertOne(burger_name) {
   });
 }
 
-function updateOne(table, id, target, value) {
+function updateOne(table, target, id, value) {
   return new Promise(function(resolve, reject) {
     connection.query("UPDATE ? SET ?? = ? WHERE id = ?", [table, target, value, id], (err, data) =>{
       if (err) reject(err);
