@@ -1,8 +1,8 @@
-const connection = require("connection");
+const connection = require("./connection");
 
-function selectAll(target, table) {
+function selectAll(table) {
   return new Promise(function(resolve, reject) {
-    connection.query("Select ? from ?", [target, table], (err, data) => {
+    connection.query("Select * from ?", [table], (err, data) => {
       if (err) reject(err);
       resolve(data);
     });

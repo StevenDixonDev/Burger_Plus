@@ -1,20 +1,28 @@
-const Express = require('express');
+const express = require('express');
+const exphbs = require("express-handlebars");
 
 // create new express app
-const app = Express();
+const app = express();
 
 // define the port for the app to listen to
 const PORT = process.env.PORT || 3000;
 
+// set up handlebars on the app
+app.engine("handlebars", exphbs());
+app.set("view engine", "handlebars");
+
 // define default route
 app.get('/', (req, res) => {
-    req.setEncoding('Hello Server')
+    res.render('index');
 })
 
+// import routes created from app.route
+const burger_route = require("./controllers/burgers_controller");
+
+app.use("/api", burger_route);
+
 // define redirect route
-app.get('*', (req, res) => {
-    res.redirect('/');
-})
+
 
 // start the express server
 app.listen(PORT, ()=>{
