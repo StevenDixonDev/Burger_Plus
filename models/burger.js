@@ -10,6 +10,6 @@ const burger =  {
     updateOne: function(...params){
         return orm.updateOne('burgers', 'devoured', ...params);
     }
-}
+};
 
 module.exports = burger;

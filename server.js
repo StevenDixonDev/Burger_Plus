@@ -1,8 +1,10 @@
-const express = require('express');
+const express = require("express");
 const exphbs = require("express-handlebars");
-
+const static = require("serve-static");
 // create new express app
 const app = express();
+
+app.use(static(__dirname + '/public'));
 
 // define the port for the app to listen to
 const PORT = process.env.PORT || 3000;
@@ -22,6 +24,7 @@ const burger_route = require("./controllers/burgers_controller");
 app.use("/api", burger_route);
 
 // define redirect route
+
 
 
 // start the express server
