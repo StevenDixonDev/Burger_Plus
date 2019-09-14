@@ -26,7 +26,7 @@ module.exports = { selectAll, insertOne, updateOne };
 
 // create a query function to wrap connection.query
 function _query(...parameters) {
-  // create a function that resolves or rejects the promise
+  // create a function that resolves or rejects the promise 
   function promise_resolver(resolve, reject) {
     function query_resolver (err, data){
       if (err) reject(err);
