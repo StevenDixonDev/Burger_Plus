@@ -1,6 +1,6 @@
 # Buger_Plus
 
-A fantastic burger tracking app!
+:hamburger: Keep track of all the burgers you and your friends eat with this fantastic burger tracking application. 
 
 ## Install
 
