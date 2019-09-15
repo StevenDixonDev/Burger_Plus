@@ -16,3 +16,4 @@ A fantastic burger tracking app!
 - Express.js
 - MVC
 - Handlebars
+- Static assets

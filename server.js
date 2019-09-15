@@ -13,6 +13,12 @@ const PORT = process.env.PORT || 3000;
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
+// set body parser middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+
 // define default route
 app.get('/', (req, res) => {
     res.render('index');
@@ -21,11 +27,8 @@ app.get('/', (req, res) => {
 // import routes created from app.route
 const burger_route = require("./controllers/burgers_controller");
 
-app.use("/api", burger_route);
-
 // define redirect route
-
-
+app.use("/api", burger_route);
 
 // start the express server
 app.listen(PORT, ()=>{

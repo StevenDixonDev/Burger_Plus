@@ -5,21 +5,11 @@ function selectAll(table) {
 }
 
 function insertOne(burger_name) {
-  return new Promise(function (resolve, reject) {
-    connection.query("INSERT INTO burgers (burger_name, devoured) VALUES (? , false)", [burger_name], (err, data) => {
-      if (err) reject(err);
-      resolve(data);
-    });
-  });
+  return _query("INSERT INTO burgers (burger_name, devoured) VALUES (? , false)", [burger_name])
 }
 
 function updateOne(table, target, id, value) {
-  return new Promise(function (resolve, reject) {
-    connection.query("UPDATE ? SET ?? = ? WHERE id = ?", [table, target, value, id], (err, data) => {
-      if (err) reject(err);
-      resolve(data);
-    });
-  });
+  return _query("UPDATE ?? SET ?? = ? WHERE id = ?", [table, target, value, id]);
 }
 
 module.exports = { selectAll, insertOne, updateOne };

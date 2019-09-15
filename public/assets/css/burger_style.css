@@ -1,1 +1,212 @@
-p{color: red}
+/*  
+#E9AF4B light browm
+#F48C33 red-orange
+#E86C36
+*/
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(255, 245, 224);
+}
+
+#main{
+    display: flex; 
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    width: 100%;
+    font-family: 'Monoton', cursive;
+    display: flex;
+    flex-direction: row;
+    font-size: 3em;
+    align-content: center;
+    justify-content: center;
+}
+
+.burger-image{ 
+    width: 8%;
+    min-width: 80px;
+    background: url("/assets/img/burger.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: .3em;
+}
+
+.title-text{
+    margin: 0;
+    margin-left: .2em;
+    color: #F6C350;
+    text-shadow: 1px 4px 2px #D46351;
+}
+
+.form-wrapper {
+    font-family: 'Chicle', cursive;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.form-wrapper form{
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+}
+
+.form-wrapper label{
+    color: #F6C350;
+    text-shadow: 1px 3px 2px #E46B36;
+    font-size: 3em; 
+}
+
+.form-wrapper input{
+    width: 50%;
+    margin: 1em;
+    padding: .5em;
+    border-radius: 5px;
+    border: 2px solid #E86C36;
+    font-family: 'Chicle', cursive;
+}
+
+.form-wrapper button{
+    background-color: #D46351;
+    color: #F6C350;
+    padding: .5em;
+    border-radius: 5px;
+    width: 50%;
+    font-size: .8em;
+    font-family: 'Chicle', cursive;
+    font-size: 1.5em;
+}
+
+.display-wrapper{
+    margin-top: 1em;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+    border: 1px solid red;
+    font-family: 'Chicle', cursive;
+}
+
+#left{
+    width: 50%;
+    text-align: center;
+}
+
+#right{
+    width: 50%;
+    text-align: center;
+}
+
+.burger-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.burger-list-item-title{
+    font-size: 1.3em;
+    color: rgb(77, 77, 77);
+}
+
+.burger-list-done{
+    text-decoration: line-through;
+}
+
+.burger-list-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: .5em;
+}
+
+.burger-list-item > :nth-child(1){
+    padding-right: 1em;
+}
+
+.seventies-button {
+    background-color: #D46351;
+    color: #F6C350;
+    padding: .5em;
+    border-radius: 5px;
+    border: 2px solid #D46351;
+    font-size: .8em;
+    font-family: 'Chicle', cursive;
+    font-size: 1em;
+}
+
+.seventies-button:hover{
+    border: 2px solid #F6C350
+}
+
+.seventies-button:focus{
+    outline: 0;
+    border: 2px solid #F6C350
+}
+
+.seventies-text-one{
+    color: #F6C350;
+    text-shadow: -1px 3px 2px #E46B36;
+    font-size: 1.8em;
+    padding: 0;
+}
+
+.seventies-border{
+    border: 3px solid #E86C36;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 2px 3px 10px black;
+}
+
+
+.seventies-border:after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 4px solid #F48C33;
+  z-index: -1000;
+}
+
+.seventies-border:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 3px;
+    border: 4px solid #E9AF4B;
+    z-index: -1000;
+  }
+
+  @media (max-width: 950px){
+      .title{
+        font-size: 1.5em;
+      }
+      .burger-image{
+        width: 10%;
+    }
+      .display-wrapper{
+          width: 100%
+      }
+      .form-wrapper{
+          margin-top: 1em;
+          width: 100%;
+      }
+  }

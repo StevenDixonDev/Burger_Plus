@@ -1,0 +1,91 @@
+<div id="main">
+    <div class="title">
+        <div class="burger-image"></div>
+        <h2 class="title-text">EAT-DA-BURGER-+</h2>
+    </div>
+    <div class="form-wrapper seventies-border">
+        <form>
+            <label for="burger_name" class="seventies-text-one">ENTER A BURGER</label>
+            <input id="burger-name"/>
+            <button type="submit" id="burger-submit" class="seventies-button">
+                SUBMIT
+            </button>
+        </form>
+    </div>
+    <div class="display-wrapper seventies-border">
+        <div id="left">
+            <h3 class="seventies-text-one">On the menu</h3>
+            <div class="burger-list" id="burger-list-new">
+            </div>
+        </div>
+        <div id="right">
+            <h3 class="seventies-text-one">Devoured Burgers</h3>
+            <div class="burger-list" id="burger-list-devoured">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("burger-submit").addEventListener("click", function (e) {
+            e.preventDefault();
+            fetch("/api/new", {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({burger: document.getElementById("burger-name").value}), // body data type must match "Content-Type" header
+            }).then(res => res.json())
+            .then(mapBurgersToUi);
+        });
+
+        fetch('/api/all').then(res => res.json()).then(mapBurgersToUi)
+
+        function mapBurgersToUi(arrayOfBurgers) {
+            if(!arrayOfBurgers){
+                throw 'error in burgers received, abort.';
+            }
+            document.getElementById("burger-list-new").innerHTML = "";
+            document.getElementById("burger-list-devoured").innerHTML = "";
+            arrayOfBurgers.forEach(burger => {
+                if (burger.devoured) {
+                    return addDevouredBurger(burger);
+                }
+                addBurger(burger);
+            })
+        }
+
+        document.getElementById("burger-list-new").addEventListener("click", function (e) {
+            e.preventDefault();
+            if (e.target.classList.contains("devour-button")) {
+                devourBurger(e.target.dataset.burgerId);
+            }
+        })
+
+        function addDevouredBurger(burger) {
+            document.getElementById("burger-list-devoured").innerHTML +=
+                `<div class="burger-list-item" id="burger-list-devoured">
+                    <p class="burger-list-item-title burger-list-done">${burger.burger_name}</p>
+                </div>`;
+        }
+
+        function addBurger(burger) {
+            console.log(burger.id)
+            document.getElementById("burger-list-new").innerHTML += `
+                <div class="burger-list-item">
+                    <p class="burger-list-item-title">${burger.burger_name}</p>
+                    <button class="seventies-button devour-button" data-burger-id="${burger.id}">Devour it!</button>
+                </div>
+            `;
+        }
+
+        function devourBurger(id) {
+            fetch("/api/update", {
+                method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({id: id, devoured: true}), // body data type must match "Content-Type" header
+            }).then(res => res.json())
+            .then(mapBurgersToUi);
+        }
+    </script>
+</div>

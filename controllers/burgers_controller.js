@@ -11,16 +11,20 @@ router.get('/all', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
-    let body = req.body.params;
+    let body = req.body;
     burger.insertOne(body.burger).then(data => {
-        res.send("!")
+        burger.all().then(data =>{
+            res.json(data)
+        })
     }).catch(err => console.log(err));
 })
 
 router.put('/update', (req, res) => {
-    let body = req.body.params;
-    burger.updateOne(body.id, body.devoured).then(data => {
-        res.send("!");
+    let body = req.body;
+    burger.updateOne(body.id, true).then(data => {
+        burger.all().then(data =>{
+            res.json(data)
+        })
     }).catch(err => console.log(err));
 })
 
